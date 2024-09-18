@@ -11,7 +11,7 @@ This project involves analyzing restaurant data from Zomato using SQL queries. T
 - Determine areas where restaurants perform poorly and need improvement.
 
 ## Dataset
-The dataset consists of information about restaurants, including details such as location, cuisine, pricing, and customer ratings for both dining and delivery services.
+The data for this analysis is sourced from Netflix’s public dataset available on [Kaggle](https://www.kaggle.com/datasets/phiitm/chennai-zomato-restaurants-data).
 
 ### Schema
 - **Restaurant**: Name of the restaurant.
@@ -42,6 +42,8 @@ SELECT *
 FROM highest_avg
 WHERE rank = 1;
 ```
+![image](https://github.com/user-attachments/assets/1d135099-0587-49b5-ac9d-00dc3726dd43)
+
 This query identifies the restaurants with the highest dining ratings.
 
 ### 2. Identify the Top 5 Restaurants in Each Cuisine Based on Dining Ratings
@@ -68,6 +70,8 @@ ORDER BY
     DINING_RATING DESC
 LIMIT 5;
 ```
+![image](https://github.com/user-attachments/assets/4f59f9e2-5f91-4211-bcc1-44ec22fbbe0b)
+
 This query lists the top 5 restaurants for each cuisine based on dining ratings.
 
 ### 3. Which Restaurants Have a Higher Delivery Rating Compared to Their Dining Rating?
@@ -82,7 +86,8 @@ WHERE
 ORDER BY 
     DELIVERY_RATING DESC;
 ```
-This query identifies restaurants where the delivery rating is higher than the dining rating.
+![image](https://github.com/user-attachments/assets/71974b32-c28a-4ab4-ae13-a329d071c482)
+###### 3197 restarants higher rating than dining rating
 
 ### 4. Top 10 Dishes That Lead to Higher Customer Retention
 ```sql
@@ -103,7 +108,7 @@ ORDER BY
     COUNT(*) DESC
 LIMIT 10;
 ```
-This query lists the top 10 dishes that contribute to higher customer retention.
+![image](https://github.com/user-attachments/assets/60d86250-7f05-47f3-885c-1ff18991c1a4)
 
 ### 5. Identify the Top 10 Restaurants in Terms of Dining and Delivery Ratings
 ```sql
@@ -129,7 +134,8 @@ ORDER BY
     DELIVERY_RATING DESC
 LIMIT 10;
 ```
-This query lists the top 10 restaurants based on both dining and delivery ratings.
+![image](https://github.com/user-attachments/assets/3a8bd289-979d-4226-8009-74de511de699)
+![image](https://github.com/user-attachments/assets/13b0de7b-afc2-4e0f-9b24-717d8c565b60)
 
 ### 6. Identify Underserved Areas Where Restaurants Perform Poorly and Need Improvement
 ```sql
@@ -148,7 +154,8 @@ HAVING
 ORDER BY 
     Restaurant_Count DESC;
 ```
-This query identifies locations where restaurants are performing poorly based on dining ratings.
+![image](https://github.com/user-attachments/assets/f5484121-2c34-41d2-8377-ba62b21bc608)
+###### 240 restaurants are performs poor.
 
 ### 7. Which Areas Have the Highest Concentration of Top-Rated Restaurants?
 ```sql
@@ -167,7 +174,9 @@ HAVING
 ORDER BY 
     Avg_Dining_Rating DESC;
 ```
-This query lists areas with the highest concentration of top-rated restaurants.
+![image](https://github.com/user-attachments/assets/87b2fc00-4d12-47ea-bbde-a664e6ef5685)
+
+54 restaurants concentration of top-ratings.
 
 ### 8. Which Top 5 Restaurants Have the Highest Number of Dining and Delivery Rating Counts?
 ```sql
@@ -193,11 +202,12 @@ ORDER BY
     DELIVERY_RATING_COUNT DESC
 LIMIT 5;
 ```
-This query lists the top 5 restaurants based on the number of dining and delivery ratings.
+![image](https://github.com/user-attachments/assets/bfed4ec2-f221-4279-aa84-56bb9ccafdfb)
+![image](https://github.com/user-attachments/assets/d395adea-a30a-4ec4-8d74-f17a292eb55b)
 
 
 ### 9.Do higher-priced restaurants (e.g., 1000+ INR) tend to have better ratings compared to lower-priced ones?
-```
+```sql
 SELECT
     ROUND(AVG(CASE WHEN PRICE_FOR_2 < 1000 THEN DINING_RATING END), 2) AS DINING_LOWER,
  	ROUND(AVG(CASE WHEN PRICE_FOR_2 > 1000 THEN DINING_RATING END), 2) AS DINING_HIGHER,
@@ -206,10 +216,11 @@ SELECT
 FROM
   ZOMATO;
 ```
+![image](https://github.com/user-attachments/assets/88575cf5-5443-445f-a95b-3215f2ef54da)
 
 ### 10.Are there any locations where the majority of restaurants have lower than average ratings?
 
-```
+```sql
 WITH CTE1 AS (
 	SELECT
 		AVG(DINING_RATING) AS AVG_DINING_RATING,AVG(DELIVERY_RATING) AS AVG_DELIVERY_RATING
@@ -229,7 +240,8 @@ FROM
 WHERE
 	CTE1.AVG_DINING_RATING < LAVG_DINING_RATING OR CTE1.AVG_DELIVERY_RATING < LAVG_DELIVERY_RATING;
 ```
-
+![image](https://github.com/user-attachments/assets/b038b4e0-edf6-4d7c-aa51-66e8e0353029)
+ ###### 171 locations have lower rating than average ratings.
 
 ## Conclusion
 This Zomato dataset analysis highlights key trends in restaurant performance based on customer ratings for both dining and delivery. By identifying top restaurants and underserved areas, businesses can better tailor their services to meet customer needs.
