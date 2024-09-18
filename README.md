@@ -11,7 +11,7 @@ This project involves analyzing restaurant data from Zomato using SQL queries. T
 - Determine areas where restaurants perform poorly and need improvement.
 
 ## Dataset
-The data for this analysis is sourced from Netflix’s public dataset available on [Kaggle](https://www.kaggle.com/datasets/phiitm/chennai-zomato-restaurants-data).
+The data for this analysis is sourced from Chennai Zomato Restaurants Data available on [Kaggle](https://www.kaggle.com/datasets/phiitm/chennai-zomato-restaurants-data).
 
 ### Schema
 - **Restaurant**: Name of the restaurant.
