@@ -13,7 +13,6 @@ This project involves analyzing restaurant data from Zomato using SQL queries. T
 ## Dataset
 The data for this analysis is sourced from Chennai Zomato Restaurants Data available on [Kaggle](https://www.kaggle.com/datasets/phiitm/chennai-zomato-restaurants-data).
 
-### Schema
 - **Restaurant**: Name of the restaurant.
 - **Address**: Restaurant’s address.
 - **Locations**: The location or area of the restaurant.
@@ -25,6 +24,25 @@ The data for this analysis is sourced from Chennai Zomato Restaurants Data avail
 - **Delivery_Rating**: The restaurant’s rating for delivery.
 - **Delivery_Rating_Count**: Number of reviews/ratings for delivery.
 - **Features**: Any additional features of the restaurant (e.g., live music, outdoor seating, etc.).
+```sql
+DROP TABLE IF EXISTS ZOMATO;
+
+CREATE TABLE ZOMATO (
+    Zomato_URL TEXT,
+    Restaurant TEXT,
+    Address TEXT,
+    Locations TEXT,
+    Cuisine TEXT,
+    Top_Dishes TEXT,
+    Price_for_2 DECIMAL(10, 2),
+    Dining_Rating DECIMAL(2, 1),
+    Dining_Rating_Count INT,
+    Delivery_Rating DECIMAL(2, 1),
+    Delivery_Rating_Count INT,
+    Features TEXT
+);
+```
+
 
 ## Business Problems and Solutions
 
